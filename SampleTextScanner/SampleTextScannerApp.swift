@@ -6,12 +6,16 @@ The main entry point for the app.
 */
 
 import SwiftUI
+import UIKit
+import AVKit
 
 @main
 struct SampleTextScannerApp: App {
+    @Environment(\.scenePhase) var scenePhase
     var body: some Scene {
         WindowGroup {
-            InitialView()
+            HomeView()
         }
     }
 }
+

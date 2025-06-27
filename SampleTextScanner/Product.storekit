@@ -1,0 +1,167 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "0924EDAF",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "100.00",
+      "familyShareable" : false,
+      "internalID" : "A57508FA",
+      "localizations" : [
+        {
+          "description" : "OnePageOneWeek",
+          "displayName" : "OnePageOneWeek",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.OnePageOneWeek",
+      "referenceName" : "OnePageOneWeek",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "1200",
+      "familyShareable" : false,
+      "internalID" : "4B694DBD",
+      "localizations" : [
+        {
+          "description" : "OnePageOneYear",
+          "displayName" : "OnePageOneYear",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.OnePageOneYear",
+      "referenceName" : "OnePageOneYear",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "01D101F7",
+      "localizations" : [
+        {
+          "description" : "RecognizeTextOneWeek",
+          "displayName" : "RecognizeTextOneWeek",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.RecognizeTextOneWeek",
+      "referenceName" : "RecognizeTextOneWeek",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "1200",
+      "familyShareable" : false,
+      "internalID" : "E72C1433",
+      "localizations" : [
+        {
+          "description" : "RecognizeTextOneYear",
+          "displayName" : "RecognizeTextOneYear",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.RecognizeTextOneYear",
+      "referenceName" : "RecognizeTextOneYear",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "FA5E31CC",
+      "localizations" : [
+        {
+          "description" : "TextToAudioOneWeek",
+          "displayName" : "TextToAudioOneWeek",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.TextToAudioOneWeek",
+      "referenceName" : "TextToAudioOneWeek",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "1200",
+      "familyShareable" : false,
+      "internalID" : "3998B31C",
+      "localizations" : [
+        {
+          "description" : "TextToAudioOneYear",
+          "displayName" : "TextToAudioOneYear",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.TextToAudioOneYear",
+      "referenceName" : "TextToAudioOneYear",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

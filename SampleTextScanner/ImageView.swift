@@ -31,7 +31,7 @@ struct ImageView: View {
             VStack {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: InitialView()) {
+                    NavigationLink(destination: PhotoView()) {
                         Text("Retake Photo")
                             .padding()
                             .font(.headline)

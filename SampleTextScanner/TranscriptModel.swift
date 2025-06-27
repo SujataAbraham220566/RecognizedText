@@ -24,19 +24,26 @@ class TranscriptModel{
             }
             do {
                 let fileHandle = try FileHandle(forWritingTo: filePath)
-                defer{
+                /*defer{
                     fileHandle.closeFile()
-                }
+                }*/
                 for observation in imageOCR.observations{
-                    let padd = Int(observation.topLeft.x * CGFloat(500))
+                    let padd = Int(observation.topLeft.x * UIScreen.main.bounds.width)
                     let spaces = String(repeating: " ", count: padd)
-                    let content = spaces + observation.topCandidates(1).first!.string + "\n"
-                    fileHandle.seekToEndOfFile()
-                    print(content)
+                    let text = observation.topCandidates(1).first?.string ?? "no text"
+                    let content = spaces + text + "\n"
                     if let data = content.data(using: .utf8){
+                        fileHandle.seekToEndOfFile()
                         try fileHandle.write(contentsOf: data)
+                        print(content)
+                        //try content.write(to: filePath, atomically: true, encoding: .utf8)
                     }
-                    //try content.write(to: filePath, atomically: true, encoding: .utf8)
+                }
+                do {
+                    let fileContents = try String(contentsOf: filePath, encoding: .utf8)
+                    print(fileContents) // This prints the entire file content to the Xcode console
+                } catch {
+                    print("Failed to read file: \(error)")
                 }
                 fileHandle.closeFile()
             } catch {
