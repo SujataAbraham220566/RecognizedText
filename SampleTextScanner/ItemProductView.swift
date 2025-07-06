@@ -36,17 +36,18 @@ struct ItemProductView: View {
     @State var purchase = 0
     @State private var isPurchasing = false
     @State private var purchaseError: String?
+    @State var imagePic = UIImage()
     
     //@State var nextView = PhotoView.self
     //let moc: ManagedObjectContext
     //var storeKitManager = StoreKitManager()
     enum ProductName: String {
-        case onePageOneWeek
-        case onePageOneYear
-        case recognizeTextOneWeek
-        case recognizeTextOneYear
-        case textToAudioOneWeek
-        case textToAudioOneYear
+        case scanPagePerWeek
+        case scanPagePerYear
+        case ImportFilesToTextPerWeek
+        case ImportFilesToTextPerYear
+        case ImportFilesToSpeechPerWeek
+        case ImportFilesToSpeechPerYear
     }
     //@Environment(\.colorScheme) var colorScheme
     //@Environment(\.dismiss) var dismiss
@@ -63,6 +64,7 @@ struct ItemProductView: View {
                         if item.isPurchased {
                             //NavigationLink {
                             NavigationLink(destination: destinationView(for: item)) {
+                                //
                                 Text(item.product.displayName)
                             }
                             
@@ -116,11 +118,14 @@ struct ItemProductView: View {
     @ViewBuilder
     func destinationView(for item: ItemViewModel) -> some View {
         switch item.product.displayName {
-        case "OnePageOneWeek", "OnePageOneYear":
+        case "1. ScanPage / Week", "2. ScanPage / Year":
+            //var imagePic = Image(systemName: camera.fill)
             PhotoView()
-        case "RecognizeTextOneWeek", "RecognizeTextOneYear":
+        case "3. ImportFilesToText / Week", "4. ImportFilesToText / Year":
+            //var imagePic = Image(systemName: doc.fill)
             PdfView()
-        case "TextToAudioOneWeek", "TextToAudioOneYear":
+        case "5. ImportFilesToSpeech / Week", "6. ImportFilesToSpeech / Year":
+            //var imagePic = Image(systemName: speaker.fill)
             TextAudioView()
         default:
             EmptyView()

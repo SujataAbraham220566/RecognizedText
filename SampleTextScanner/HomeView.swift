@@ -72,7 +72,7 @@ struct HomeView: View {
                         Text("Convert a pdf file to text")
                             .font(.custom("Rubic Doodle shadow", size: 15))
                         
-                        Text("Convert a pdf file to audio")
+                        Text("Convert a pdf file to speech")
                             .font(.custom("Rubic Doodle shadow", size: 15))
                     }
                     .frame(width: 300, height: 80, alignment: .center)

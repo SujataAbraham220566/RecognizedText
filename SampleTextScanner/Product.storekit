@@ -12,93 +12,93 @@
   "identifier" : "0924EDAF",
   "nonRenewingSubscriptions" : [
     {
-      "displayPrice" : "100.00",
+      "displayPrice" : "2",
       "familyShareable" : false,
       "internalID" : "A57508FA",
       "localizations" : [
         {
-          "description" : "OnePageOneWeek",
-          "displayName" : "OnePageOneWeek",
+          "description" : "1. Scan Page / Week",
+          "displayName" : "1. ScanPage / Week",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.OnePageOneWeek",
-      "referenceName" : "OnePageOneWeek",
+      "referenceName" : "1. ScanPage / Week",
       "type" : "NonRenewingSubscription"
     },
     {
-      "displayPrice" : "1200",
+      "displayPrice" : "16",
       "familyShareable" : false,
       "internalID" : "4B694DBD",
       "localizations" : [
         {
-          "description" : "OnePageOneYear",
-          "displayName" : "OnePageOneYear",
+          "description" : "2. ScanPage / Year",
+          "displayName" : "2. ScanPage / Year",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.OnePageOneYear",
-      "referenceName" : "OnePageOneYear",
+      "referenceName" : "2. ScanPage / Year",
       "type" : "NonRenewingSubscription"
     },
     {
-      "displayPrice" : "100",
+      "displayPrice" : "10",
       "familyShareable" : false,
       "internalID" : "01D101F7",
       "localizations" : [
         {
-          "description" : "RecognizeTextOneWeek",
-          "displayName" : "RecognizeTextOneWeek",
+          "description" : "3. Import FilesToText / Week",
+          "displayName" : "3. Import FilesToText / Week",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.RecognizeTextOneWeek",
-      "referenceName" : "RecognizeTextOneWeek",
+      "referenceName" : "3. Import FilesToText / Week",
       "type" : "NonRenewingSubscription"
     },
     {
-      "displayPrice" : "1200",
+      "displayPrice" : "50",
       "familyShareable" : false,
       "internalID" : "E72C1433",
       "localizations" : [
         {
-          "description" : "RecognizeTextOneYear",
-          "displayName" : "RecognizeTextOneYear",
+          "description" : "4. ImportFilesToText / Year",
+          "displayName" : "4. ImportFilesToText / Year",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.RecognizeTextOneYear",
-      "referenceName" : "RecognizeTextOneYear",
+      "referenceName" : "4. ImportFilesToText / Year",
       "type" : "NonRenewingSubscription"
     },
     {
-      "displayPrice" : "100",
+      "displayPrice" : "10",
       "familyShareable" : false,
       "internalID" : "FA5E31CC",
       "localizations" : [
         {
-          "description" : "TextToAudioOneWeek",
-          "displayName" : "TextToAudioOneWeek",
+          "description" : "5. ImportFilesToSpeech / Week",
+          "displayName" : "5. ImportFilesToSpeech / Week",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.TextToAudioOneWeek",
-      "referenceName" : "TextToAudioOneWeek",
+      "referenceName" : "5. ImportFilesToSpeech / Week",
       "type" : "NonRenewingSubscription"
     },
     {
-      "displayPrice" : "1200",
+      "displayPrice" : "50",
       "familyShareable" : false,
       "internalID" : "3998B31C",
       "localizations" : [
         {
-          "description" : "TextToAudioOneYear",
-          "displayName" : "TextToAudioOneYear",
+          "description" : "6. ImportFilesToSpeech / Year",
+          "displayName" : "6. ImportFilesToSpeech / Year",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.TextToAudioOneYear",
-      "referenceName" : "TextToAudioOneYear",
+      "referenceName" : "6. ImportFilesToSpeech / Year",
       "type" : "NonRenewingSubscription"
     }
   ],
