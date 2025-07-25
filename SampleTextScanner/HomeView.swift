@@ -63,23 +63,58 @@ struct HomeView: View {
                     Text("Handwriting to Text To Audio")
                         .font(.custom("Borel-Regular", size: 20))    //(Font.headline)
                         .bold()
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color.purple)
+                    //Spacer(minLength: 20)
                     
                     VStack {
+                        Spacer(minLength: 5)
+                        Text("      Files or Scan              ")
+                            .font(.custom("Rubic Doodle shadow", size: 30))
+                            .bold()
+                            .font(.title)
+                        Spacer(minLength: 1)
                         Text("Convert your penned notes to text")
-                            .font(.custom("Rubic Doodle shadow", size: 15))
-                        
-                        Text("Convert a pdf file to text")
-                            .font(.custom("Rubic Doodle shadow", size: 15))
-                        
-                        Text("Convert a pdf file to speech")
-                            .font(.custom("Rubic Doodle shadow", size: 15))
+                            .font(.custom("Rubic Doodle shadow", size: 20))
+                            //.frame(width: 30, height: 10, alignment: .leading)
+                            .background(.white)
+                            //.border(.red)
+                            //.cornerRadius(10)
+                            //.foreground(.red)
+                        Spacer(minLength: 5)
+                        Text("Convert a pdf file to text       ")
+                            .font(.custom("Rubic Doodle shadow", size: 20))
+                            //.frame(width: 30, height: 10, alignment: .leading)
+                            .background(.white)
+                            //.border(.red)
+                            //.cornerRadius(10)
+                            //.foreground(.blue)
+                        Spacer(minLength: 5)
+                        Text("  Convert a pdf file to speech   ")
+                            .font(.custom("Rubic Doodle shadow", size: 20))
+                            //.frame(width: 30, height: 10, alignment: .leading)
+                            .background(.white)
+                            //.border(.red)
+                            //.cornerRadius(10)
+                            //.foreground(.blue)
+                        Spacer(minLength: 5)
+                        Text("  Convert a mp4 file to text     ")
+                            .font(.custom("Rubic Doodle shadow", size: 20))
+                            //.frame(width: 30, height: 10, alignment: .leading)
+                            .background(.white)
+                        Spacer(minLength: 5)
+                        Text("  Convert a web source to text   ")
+                            .font(.custom("Rubic Doodle shadow", size: 20))
+                            //.frame(width: 30, height: 10, alignment: .leading)
+                            .background(.white)
+
+                        Spacer(minLength: 1)
                     }
-                    .frame(width: 300, height: 80, alignment: .center)
-                    .foregroundColor(.red)
-                    .background(.white)
-                    .border(Color.red)
-                    .cornerRadius(20)
+                    .frame(width: 300, height: 500, alignment: .leading)
+                    .foregroundColor(.purple)
+                    //.background(.white)
+                    //.Spacer(minLength: 1)
+                    .border(Color.purple)
+                    //.cornerRadius(10)
                 }
                 
                 Spacer(minLength: 5)
@@ -134,15 +169,15 @@ struct HomeView: View {
                 Spacer(minLength: 1)
                 VStack{
                     NavigationLink(destination: ItemProductView()){
-                        Text("Proceed")
+                        Text("Get Started")
                     }
                 }
-                .foregroundColor(.red)
+                .foregroundColor(.purple)
                 .font(.title)
                 Spacer(minLength: 30)
             }
         }
-        .background(.blue)
+        .background(.white)
     }
     /*func update() {
         //print(storeKitManager.productsById as Any, "1")

@@ -17,13 +17,13 @@
       "internalID" : "A57508FA",
       "localizations" : [
         {
-          "description" : "1. Scan Page / Week",
-          "displayName" : "1. ScanPage / Week",
+          "description" : "Scan Page Weekly",
+          "displayName" : "ScanPage Weekly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.OnePageOneWeek",
-      "referenceName" : "1. ScanPage / Week",
+      "referenceName" : "ScanPage Weekly",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -32,13 +32,13 @@
       "internalID" : "4B694DBD",
       "localizations" : [
         {
-          "description" : "2. ScanPage / Year",
-          "displayName" : "2. ScanPage / Year",
+          "description" : "ScanPage Yearly",
+          "displayName" : "ScanPage Yearly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.OnePageOneYear",
-      "referenceName" : "2. ScanPage / Year",
+      "referenceName" : "ScanPage Yearly",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -47,13 +47,13 @@
       "internalID" : "01D101F7",
       "localizations" : [
         {
-          "description" : "3. Import FilesToText / Week",
-          "displayName" : "3. Import FilesToText / Week",
+          "description" : "Import PdfToText Weekly",
+          "displayName" : "Import PdfToText Weekly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.RecognizeTextOneWeek",
-      "referenceName" : "3. Import FilesToText / Week",
+      "referenceName" : "Import PdfToText Weekly",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -62,13 +62,13 @@
       "internalID" : "E72C1433",
       "localizations" : [
         {
-          "description" : "4. ImportFilesToText / Year",
-          "displayName" : "4. ImportFilesToText / Year",
+          "description" : "Import PdfToText Yearly",
+          "displayName" : "Import PdfToText Yearly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.RecognizeTextOneYear",
-      "referenceName" : "4. ImportFilesToText / Year",
+      "referenceName" : "Import PdfToText Yearly",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -77,13 +77,13 @@
       "internalID" : "FA5E31CC",
       "localizations" : [
         {
-          "description" : "5. ImportFilesToSpeech / Week",
-          "displayName" : "5. ImportFilesToSpeech / Week",
+          "description" : "Import TextToAudio Weekly",
+          "displayName" : "Import TextToAudio Weekly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.TextToAudioOneWeek",
-      "referenceName" : "5. ImportFilesToSpeech / Week",
+      "referenceName" : "Import TextToAudio Weekly",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -92,13 +92,73 @@
       "internalID" : "3998B31C",
       "localizations" : [
         {
-          "description" : "6. ImportFilesToSpeech / Year",
-          "displayName" : "6. ImportFilesToSpeech / Year",
+          "description" : "Import TextToAudio Yearly",
+          "displayName" : "Import TextToAudio Yearly",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.RecognizeTextToAudio.TextToAudioOneYear",
-      "referenceName" : "6. ImportFilesToSpeech / Year",
+      "referenceName" : "Import TextToAudio Yearly",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "20",
+      "familyShareable" : false,
+      "internalID" : "1FC50FA7",
+      "localizations" : [
+        {
+          "description" : "Import Mp4ToText Weekly",
+          "displayName" : "Import Mp4ToText Weekly",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.Mp4ToTextOneWeek",
+      "referenceName" : "Import Mp4ToText Weekly",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "B63328F6",
+      "localizations" : [
+        {
+          "description" : "Import Mp4ToText Yearly",
+          "displayName" : "Import Mp4ToText Yearly",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.Mp4ToTextOneYear",
+      "referenceName" : "import Mp4ToText Yearly",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "20",
+      "familyShareable" : false,
+      "internalID" : "F6275064",
+      "localizations" : [
+        {
+          "description" : "Import WebToText Weekly",
+          "displayName" : "Import WebToText Weekly",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.WebToTextOneWeek",
+      "referenceName" : "Import WebToText Weekly",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "8B7EB2B6",
+      "localizations" : [
+        {
+          "description" : "Import WebToText Yearly",
+          "displayName" : "Import WebToText Yearly",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.RecognizeTextToAudio.WebToTextOneYear",
+      "referenceName" : "Import WebToText Yearly",
       "type" : "NonRenewingSubscription"
     }
   ],

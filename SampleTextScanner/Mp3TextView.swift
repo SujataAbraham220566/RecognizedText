@@ -1,19 +1,19 @@
 //
-//  PdfView.swift
+//  Mp4Text.swift
 //  SampleTextScanner
 //
-//  Created by Sujata Abraham on 17/06/25.
+//  Created by Sujata Abraham on 19/07/25.
 //  Copyright © 2025 Apple. All rights reserved.
 //
-
 
 import AVFoundation
 import SwiftUI
 import PDFKit
 import Vision
 import UniformTypeIdentifiers
+import Speech
 
-struct PdfView: View {
+struct Mp3TextView: View {
     @State private var isFileImporterPresented = false
     @State private var importedFileContent: String = ""
     @State private var imageURL: [URL?] = []
@@ -48,16 +48,58 @@ struct PdfView: View {
         .padding()
         .fileImporter(
             isPresented: $isFileImporterPresented,
-            allowedContentTypes: [.image, .plainText, .pdf],
+            allowedContentTypes: [.mp3],
             allowsMultipleSelection: false
         ) { result in
-            let images = convertPDFToImages(result: result)
-            handleFileImport(imageURL: images!)
+            print("hey z")
+                        transcribeAudio(result: result)
+            //let images = convertPDFToImages(result: result)
+            //handleFileImport(imageURL: images!)
             //handleFileImport(result: result)
             //print(importedFileContent, "9", result, "8", "result")
         }
     }
     
+    func transcribeAudio(result: Result<[URL], Error>){
+        do {
+            print("1 hi")
+            guard let mp3URL = try! result.get().first else {
+            importedFileContent = "Could not open the file."
+            return
+            }
+        //print(pdfURL, "331")
+            /*guard
+                let mp3Document = PDFDocument(url: mp3URL)
+                  else {
+                importedFileContent = "Could not open the file."
+                //return nil
+            }*/
+            let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+            let recognitionRequest = SFSpeechURLRecognitionRequest(url: mp3URL)
+            guard let recognizer = speechRecognizer, recognizer.isAvailable else {
+                print("Speech recognizer is not available")
+                return
+            }
+            print("2 hi")
+            recognizer.supportsOnDeviceRecognition = true
+            recognitionRequest.requiresOnDeviceRecognition = true
+
+            let request = SFSpeechURLRecognitionRequest(url: mp3URL)
+            recognizer.recognitionTask(with: request){ result, error in
+                if let error = error {
+                    print("Error during transcription : \(error.localizedDescription)")
+                } else if let result = result {
+                    importedFileContent += result.bestTranscription.formattedString
+                }
+            }
+            print("3 hi")
+        } catch {
+        importedFileContent = "Error reading mp3: \(error.localizedDescription)"
+        //return nil
+    }
+
+
+    }
     func handleFileImport(imageURL: [UIImage?]) {
         //private func handleFileImport(result: Result<[URL], Error>){
         //do {

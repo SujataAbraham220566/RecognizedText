@@ -18,14 +18,17 @@ struct TextAudioView: View {
     @State private var isFileImporterPresented = false
     @State private var importedFileContent: String = ""
     @State private var imageURL: [URL?] = []
-
+    @State var speed: Double
+    @State var pitch : Double
+    @State var volume : Double
+    @State private var showVoiceSheet = false
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Text to Audio")
-                .font(.largeTitle)
-                .bold()
-            
+            /*Text("Text to Audio")
+             .font(.largeTitle)
+             .bold()
+             */
             /*if importedFileContent.isEmpty {
              Text("Imported File Content:")
              .foregroundColor(.gray)
@@ -35,7 +38,7 @@ struct TextAudioView: View {
             // .multilineTextAlignment(.leading)
             ScrollView {
                 //TextEditor(text: $importedFileContent)
-                Text(importedFileContent.isEmpty ? "no files imported yet." : importedFileContent)
+                Text(importedFileContent.isEmpty ? "no files imported yet." :     importedFileContent)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
@@ -75,10 +78,38 @@ struct TextAudioView: View {
         ) { result in
             let imageURL = convertPDFToImages(result: result)
             handleFileImport(imageURL: imageURL!)
-            print(importedFileContent, "9", result, "8", "result")
+            //print(importedFileContent, "9", result, "8", "result")
+        }
+        .navigationTitle("Text to Speech")
+        //fontWeight(.bold)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    showVoiceSheet = true
+                    //SetVoiceAndSpeed(speed: speed, pitch: pitch, volume: volume)
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .imageScale(.large)
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .sheet(isPresented: $showVoiceSheet) {
+            NavigationStack{
+                SetSpeedPitchVolume(selectedPercentSpeed: $speed, selectedPercentPitch: $pitch, selectedPercentVolume: $volume)
+                    .navigationTitle("Voice Settings")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Done") {
+                                showVoiceSheet = false
+                            }
+                        }
+                    }
+            }
         }
     }
-                
+
     func handleFileImport(imageURL: [UIImage?]) {
         //let image = UIImage(named: "quote")
         
@@ -126,11 +157,13 @@ struct TextAudioView: View {
         guard !importedFileContent.isEmpty else { return }
         let utterance = AVSpeechUtterance(string: importedFileContent)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US") // Change language if needed
-            speechSynthesizer.speak(utterance)
-        utterance.rate = 0.8
-        utterance.pitchMultiplier = 0.8
+            //speechSynthesizer.speak(utterance)
+        utterance.rate = Float(speed) / 100.0  //0.8
+        utterance.pitchMultiplier = Float(pitch) / 100.0 //0.8  pitch
         utterance.postUtteranceDelay = 0.2
-        utterance.volume = 0.8
+        utterance.volume = Float(volume) / 100.0 // 0.8 //volume
+        speechSynthesizer.speak(utterance)
+
     }
         
     func convertPDFToImages(result: Result<[URL], Error>) -> [UIImage]?{
@@ -159,5 +192,8 @@ struct TextAudioView: View {
             }
         }
         return images
+    }
+    func SetVoiceAndSpeed(){
+        
     }
 }
