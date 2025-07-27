@@ -85,8 +85,8 @@ struct TextAudioView: View {
             allowedContentTypes: [.image, .plainText, .pdf],
             allowsMultipleSelection: false
         ) { result in
-            let imageURL = convertPDFToImages(result: result)
-            handleFileImport(imageURL: imageURL!)
+            let imageURLs = convertPDFToImages(result: result)
+            handleFileImport(imageURLs: imageURLs!)
             
             //print(importedFileContent, "9", result, "8", "result")
         }
@@ -120,37 +120,42 @@ struct TextAudioView: View {
         }
     }
 
-    func handleFileImport(imageURL: [UIImage?]) {
+    func handleFileImport(imageURLs: [UIImage?]) {
+        var allRecognizedText: [String] = []
         //let image = UIImage(named: "quote")
         
-        if let cgImage = imageURL.first??.cgImage{
-            // Request handler
+        //if let cgImage = imageURL.first??.cgImage{
+        for image in imageURLs {
+            //if let image = UIImage(contentsOfFile: url.path),
+            guard let cgImage = image?.cgImage else { continue }
+                // Request handler
             let handler = VNImageRequestHandler(cgImage: cgImage)
             let recognizeRequest = VNRecognizeTextRequest { (request, error) in
-                
-                // Parse the results as text
-                guard let result = request.results as? [VNRecognizedTextObservation] else {
-                    return
+                    
+                    // Parse the results as text
+                guard let results = request.results as? [VNRecognizedTextObservation] else {
+                        return
                 }
-                
-                // Extract the data
-                let stringArray = result.compactMap { result in
-                    result.topCandidates(1).first?.string
+                    
+                    // Extract the data
+                let stringArray = results.compactMap { result in
+                        result.topCandidates(1).first?.string
                 }
+                allRecognizedText.append(stringArray.joined(separator: "\n"))
+            }
                 
                 // Update the UI
-                DispatchQueue.main.async {
-                    importedFileContent = stringArray.joined(separator: "\n")
-                }
-            }
-            
-            // Process the request
+                
+                // Process the request
             recognizeRequest.recognitionLevel = .accurate
             do {
                 try handler.perform([recognizeRequest])
             } catch {
                 print(error)
             }
+        }
+        DispatchQueue.main.async {
+            importedFileContent = allRecognizedText.joined(separator: "\n\n")
         }
     }
         
