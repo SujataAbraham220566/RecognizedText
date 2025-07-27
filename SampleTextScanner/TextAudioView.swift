@@ -14,15 +14,16 @@ import UniformTypeIdentifiers
 
 struct TextAudioView: View {
     @State private var inputText: String = ""
-    private let speechSynthesizer = AVSpeechSynthesizer()
+    //private let speechSynthesizer = AVSpeechSynthesizer()
     @State private var isFileImporterPresented = false
+    @State private var showVoiceSheet = false
+    @StateObject private var speechManager = SpeechManager()
     @State private var importedFileContent: String = ""
     @State private var imageURL: [URL?] = []
     @State var speed: Double
     @State var pitch : Double
     @State var volume : Double
-    @State private var showVoiceSheet = false
-    
+
     var body: some View {
         VStack(spacing: 20) {
             /*Text("Text to Audio")
@@ -33,6 +34,11 @@ struct TextAudioView: View {
              Text("Imported File Content:")
              .foregroundColor(.gray)
              } else {*/
+            ScrollView{
+                Text(speechManager.highlightedText)
+                    .font(.title2)
+                    .padding()
+            }
             Text("Imported File Content")
                 .font(.headline)
             // .multilineTextAlignment(.leading)
@@ -45,8 +51,11 @@ struct TextAudioView: View {
             }
             .frame(height: 300)
             //.border(Color.gray, width: 1)
+            /*Text(speechManager.highlightedText)
+                .font(.title2)
+                .foregroundColor(.yellow)*/
             Button{
-                speakText(text: importedFileContent)
+                speechManager.speakText(text: importedFileContent)
             } label: {
                 HStack{
                     Image(systemName: "microphone.fill")
@@ -78,6 +87,7 @@ struct TextAudioView: View {
         ) { result in
             let imageURL = convertPDFToImages(result: result)
             handleFileImport(imageURL: imageURL!)
+            
             //print(importedFileContent, "9", result, "8", "result")
         }
         .navigationTitle("Text to Speech")
@@ -144,28 +154,7 @@ struct TextAudioView: View {
         }
     }
         
-    func speakText(text: String){
-            //func speakText(_ text: String? = nil, completion: @escaping() -> Void) throws {
-            /* let audioSession = AVAudioSession.sharedInstance()
-             
-             do {
-             try audioSession.setCategory(.playback, mode: .voicePrompt, options: [.duckOthers])
-             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-             } catch {
-             throw TextToSpeechError.audioSessionSetupFailed
-             }*/
-        guard !importedFileContent.isEmpty else { return }
-        let utterance = AVSpeechUtterance(string: importedFileContent)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US") // Change language if needed
-            //speechSynthesizer.speak(utterance)
-        utterance.rate = Float(speed) / 100.0  //0.8
-        utterance.pitchMultiplier = Float(pitch) / 100.0 //0.8  pitch
-        utterance.postUtteranceDelay = 0.2
-        utterance.volume = Float(volume) / 100.0 // 0.8 //volume
-        speechSynthesizer.speak(utterance)
-
-    }
-        
+            
     func convertPDFToImages(result: Result<[URL], Error>) -> [UIImage]?{
         guard let pdfURL = try! result.get().first,
             let pdfDocument = PDFDocument(url: pdfURL) else {
@@ -196,4 +185,82 @@ struct TextAudioView: View {
     func SetVoiceAndSpeed(){
         
     }
+    
+}
+
+class SpeechManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+    private var synthesizer = AVSpeechSynthesizer()
+    private var originalText: String = ""
+    private var wordRanges: [NSRange] = []
+    @State var importedFileContent = ""
+    @State private var imageURL: [URL?] = []
+    var speed: Double = 50.0
+    var pitch : Double = 50.0
+    var volume : Double = 50.0
+
+
+    @Published var highlightedText: AttributedString = ""
+
+    override init() {
+        super.init()
+        synthesizer.delegate = self
+    }
+
+    /*func speak(text: String) {
+        
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = Float(speed / 100) // e.g. 0.5 = normal
+        utterance.pitchMultiplier = Float(pitch / 100)
+        utterance.volume = Float(volume / 100)
+        utterance.postUtteranceDelay = 0.1
+
+
+        synthesizer.speak(utterance)
+    }*/
+    /*func speakImportedText(_ text: String) {
+            //guard !importedFileContent.isEmpty else { return }
+            speak(text: importedFileContent)
+        }*/
+
+     
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
+        let full = utterance.speechString as NSString
+        //let word = full.substring(with: characterRange)
+        DispatchQueue.main.async {
+            guard !self.originalText.isEmpty else { return }
+            var attributed = AttributedString(full as String)
+            if let range = Range(characterRange, in: attributed) {
+                attributed[range].backgroundColor = .yellow
+            }
+            self.highlightedText = attributed
+        }
+    }
+    func speakText(text: String){
+        
+        self.originalText = text
+        self.highlightedText = AttributedString(text)
+            //func speakText(_ text: String? = nil, completion: @escaping() -> Void) throws {
+            /* let audioSession = AVAudioSession.sharedInstance()
+             
+             do {
+             try audioSession.setCategory(.playback, mode: .voicePrompt, options: [.duckOthers])
+             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+             } catch {
+             throw TextToSpeechError.audioSessionSetupFailed
+             }*/
+        //guard !importedFileContent.isEmpty else { return }
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US") // Change language if needed
+            //speechSynthesizer.speak(utterance)
+        utterance.rate = Float(speed) / 100.0  //0.8
+        utterance.pitchMultiplier = Float(pitch) / 100.0 //0.8  pitch
+        utterance.postUtteranceDelay = 0.2
+        utterance.volume = Float(volume) / 100.0 // 0.8 //volume
+        synthesizer.speak(utterance)
+
+    }
+
+    
 }
