@@ -30,7 +30,7 @@ struct WebTextView: View {
                 .font(.headline)
             // .multilineTextAlignment(.leading)
             ScrollView {
-                //TextEditor(text: $importedFileContent)
+                //TextField("files from web", text: $plainText)
                 Text(plainText.isEmpty ? "no files from web yet." : plainText)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color.gray.opacity(0.1))
@@ -43,7 +43,7 @@ struct WebTextView: View {
                 fetchWebSourceAsText(from: webUrl) { plainText in
                     if let plainText = plainText {
                         //plainTextFull += plainText
-                        //print("Plain Text:\n\(plainText)")
+                        print("Plain Text:\n\(plainText)")
                     } else {
                         print("Failed to fetch or convert web source.")
                     }
@@ -71,7 +71,7 @@ struct WebTextView: View {
                 completion(nil)
                 return
             }
-            
+            print(data as Any, "hi 1")
             guard let data = data, let htmlString = String(data: data, encoding: .utf8) else {
                 print("Failed to decode data")
                 completion(nil)
@@ -80,6 +80,7 @@ struct WebTextView: View {
             
             // Convert HTML to plain text
             let plainText = htmlToPlainText(htmlString)
+            print(plainText, "hi 2")
             completion(plainText)
         }
         

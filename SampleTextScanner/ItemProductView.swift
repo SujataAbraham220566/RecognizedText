@@ -53,10 +53,10 @@ struct ItemProductView: View {
      "com.RecognizeTextToAudio.TextToAudioOneWeek": "speaker",
      "com.RecognizeTextToAudio.TextToAudioOneYear": "speaker",
      "com.RecognizeTextToAudio.Mp4ToTextOneWeek": "file",
-     "com.RecognizeTextToAudio.Mp4ToTextOneYear": "file",
-     "com.RecognizeTextToAudio.WebToTextOneWeek": "file",
+     "com.RecognizeTextToAudio.Mp4ToTextOneYear": "file"]
+     /*"com.RecognizeTextToAudio.WebToTextOneWeek": "file",
      "com.RecognizeTextToAudio.WebToTextOneYear": "file"
-    ]
+    ]*/
     //@Environment(\.colorScheme) var colorScheme
     //@Environment(\.dismiss) var dismiss
     //@Environment(\.scenePhase) private var scenePhase
@@ -147,8 +147,8 @@ struct ItemProductView: View {
             TextAudioView(speed: speed, pitch: pitch, volume: volume)
         case "Import Mp4ToText Weekly", "Import Mp4ToText Yearly":
             Mp3TextView()
-        case "Import WebToText Weekly", "Import WebToText Yearly":
-            WebTextView(webUrl: $webUrl)
+        /*case "Import WebToText Weekly", "Import WebToText Yearly":
+            WebTextView(webUrl: $webUrl)*/
         default:
             EmptyView()
         }

@@ -48,11 +48,29 @@ struct Mp3TextView: View {
         .padding()
         .fileImporter(
             isPresented: $isFileImporterPresented,
-            allowedContentTypes: [.mp3],
+            allowedContentTypes: [.audio, .video],
             allowsMultipleSelection: false
         ) { result in
             print("hey z")
+                /*do {
+                guard let selectedFile = try result.get().first else { return }
+
+                if selectedFile.startAccessingSecurityScopedResource() {
+                    defer { selectedFile.stopAccessingSecurityScopedResource() }
+
+                    let coordinator = NSFileCoordinator()
+                    var coordError: NSError?
+
+                    coordinator.coordinate(readingItemAt: selectedFile, options: [], error: &coordError) { result in
+                            // ✅ Now safe to read
                         transcribeAudio(result: result)
+                    }
+                }
+            } catch {
+                print("File import failed: \(error)")
+            }*/
+
+            transcribeAudio(result: result)
             //let images = convertPDFToImages(result: result)
             //handleFileImport(imageURL: images!)
             //handleFileImport(result: result)

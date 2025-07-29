@@ -130,36 +130,6 @@
       "productID" : "com.RecognizeTextToAudio.Mp4ToTextOneYear",
       "referenceName" : "import Mp4ToText Yearly",
       "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "20",
-      "familyShareable" : false,
-      "internalID" : "F6275064",
-      "localizations" : [
-        {
-          "description" : "Import WebToText Weekly",
-          "displayName" : "Import WebToText Weekly",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.RecognizeTextToAudio.WebToTextOneWeek",
-      "referenceName" : "Import WebToText Weekly",
-      "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "100",
-      "familyShareable" : false,
-      "internalID" : "8B7EB2B6",
-      "localizations" : [
-        {
-          "description" : "Import WebToText Yearly",
-          "displayName" : "Import WebToText Yearly",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "com.RecognizeTextToAudio.WebToTextOneYear",
-      "referenceName" : "Import WebToText Yearly",
-      "type" : "NonRenewingSubscription"
     }
   ],
   "products" : [

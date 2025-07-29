@@ -101,12 +101,12 @@ struct HomeView: View {
                             .font(.custom("Rubic Doodle shadow", size: 20))
                             //.frame(width: 30, height: 10, alignment: .leading)
                             .background(.white)
-                        Spacer(minLength: 5)
+                        /*Spacer(minLength: 5)
                         Text("  Convert a web source to text   ")
                             .font(.custom("Rubic Doodle shadow", size: 20))
                             //.frame(width: 30, height: 10, alignment: .leading)
                             .background(.white)
-
+                        */
                         Spacer(minLength: 1)
                     }
                     .frame(width: 300, height: 500, alignment: .leading)
